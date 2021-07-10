@@ -10,11 +10,11 @@ export const start: InlineKeyboardMarkup = Markup.inlineKeyboard([
 ])
 
 export const help: InlineKeyboardMarkup = Markup.inlineKeyboard([
-    [Markup.urlButton(
-        `Join our community`,
-        `https://t.me/thegenshinimpact_community`
-    )],
     [
-        Markup.urlButton(`Official Website`, `https://genshin.mihoyo.com/en/home`)
-    ]
+        Markup.urlButton(
+            `Join our community`,
+            `https://t.me/thegenshinimpact_community`
+        )
+    ],
+    [Markup.urlButton(`Official Website`, `https://genshin.mihoyo.com/en/home`)]
 ])
