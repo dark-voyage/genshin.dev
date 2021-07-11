@@ -17,6 +17,17 @@ you're ready to go!**
 -   **Telegraf.js** - [Github](https://github.com/telegraf/telegraf)
 -   **Telegram Bot API** - [Website](https://core.telegram.org/bots/api)
 
+## Available commands
+
+|   Command   |                  Functionality                   |
+| ----------- | ------------------------------------------------ |
+| /start      | Start the bot                                    |
+| /help       | Show all available commands with its description |
+| /about      | Show about game creator's & our team             |
+| /contribute | Show links to our organization & repository      |
+| /artifacts  | Show all artifacts in detailed form via inline   |
+
+
 ## Contributors
 
 This bot exists thankfully for those who contributed this project, and they are:
