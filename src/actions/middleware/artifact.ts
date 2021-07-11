@@ -8,7 +8,7 @@ composer.command(
     'artifacts',
     async (ctx: TelegrafContext): Promise<void> => {
         await ctx.replyWithHTML(message.artifact.middleware, {
-            reply_markup: await keyboard.artifact()
+            reply_markup: await keyboard.artifact.middleware()
         })
     }
 )

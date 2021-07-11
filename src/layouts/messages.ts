@@ -2,6 +2,8 @@
  * Message Template Layout Manager
  * @module layouts/messages
  */
+import ds from '@database/ds'
+import * as cs from '@database/cs'
 
 export const start =
     `<b>Welcome to Genshin Impact Telegram bot 😏!</b>` +
@@ -35,8 +37,14 @@ export const help =
     `\n`
 
 export const artifact = {
-  action: async () => {
-    return ``
-  },
-  middleware: `<b>Choose what artifact you want to get info about:</b>`,
+    action: async (item: string) => {
+        const data = await ds(cs.ARTIFACT_URL + `/${item}`)
+        return `<b>Detailed information about an artifact:</b>` +
+          `\n` +
+          `\n` +
+          `🌀 <b>Item name:</b> <i>${data.name}</i>` +
+          `\n` +
+          `⭐ <b>Rarity:</b> ${'🌟'.repeat(data.max_rarity)}`
+    },
+    middleware: `<b>Choose what artifact you want to get info about:</b>`
 }
