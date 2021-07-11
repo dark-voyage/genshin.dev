@@ -35,9 +35,9 @@ export const help: string =
     `\n` +
     `/help - <code>show this helper message</code>` +
     `\n` +
-    `/contribute - <code>enhance this bot</code>` +
-    `\n` +
     `/about - <code>show this helper message</code>` +
+    `\n` +
+    `/contribute - <code>enhance this bot with us</code>` +
     `\n` +
     `\n` +
     `<b>List of API commands:</b>` +
@@ -45,7 +45,18 @@ export const help: string =
     `\n` +
     `/artifacts - <code>get info about artifacts</code>`
 
-export const about: string = 'Some text'
+export const about = {
+    game:
+        '<b> Genshin Impact (原神)</b>' +
+        `\n` +
+        `\n` +
+        'The latest open-world action RPG developed by miHoYo. The game features a massive, gorgeous map, an elaborate elemental combat system, engaging storyline & characters, co-op game mode, soothing soundtrack, and much more for you to explore!',
+    team:
+        '<b>Genshindevs</b>' +
+        `\n` +
+        `\n` +
+        `An unofficial team that focuses on creating developer resources and user services.`
+}
 
 export const contribute: string =
     "<b>Hey Traveler,</b> (●'◡'●)" +

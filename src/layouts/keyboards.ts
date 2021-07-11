@@ -21,15 +21,30 @@ export const help: InlineKeyboardMarkup = Markup.inlineKeyboard([
     [Markup.urlButton(`Official Website`, `https://genshin.mihoyo.com/en/home`)]
 ])
 
-export const about: InlineKeyboardMarkup = Markup.inlineKeyboard([
-    [
+export const about = async (page: string): Promise<InlineKeyboardMarkup> => {
+    const base = []
+    const links = [
         Markup.urlButton(`Mihoyo's Discord`, `https://discord.gg/auevVWRSMK`),
         Markup.urlButton(
             `Genshindev's Discord`,
             `https://discord.gg/VPZHJWjtFp`
         )
     ]
-])
+    if (page === 'game') {
+        base.push([Markup.callbackButton(`➡️`, `about_team`)])
+        base.push(links)
+    }
+
+    if (page === 'team') {
+        base.push([Markup.callbackButton(`⬅️`, `about_game`)])
+        base.push(links)
+    }
+
+    if (!page) {
+        base.push(links)
+    }
+    return Markup.inlineKeyboard(base)
+}
 
 export const contribute: InlineKeyboardMarkup = Markup.inlineKeyboard([
     [Markup.urlButton(`Our Organization`, `https://github.com/genshindev`)],
