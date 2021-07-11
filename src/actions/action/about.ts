@@ -8,11 +8,18 @@ composer.action(
     /about_(.*)/gi,
     async (ctx: TelegrafContext): Promise<void> => {
         const match = ctx.match[1]
-        await ctx.editMessageText(message.about[match], {
-            parse_mode: 'HTML',
-            reply_markup: await keyboard.about(match),
-            disable_web_page_preview: true
-        })
+        await ctx.editMessageMedia(
+            {
+                type: 'photo',
+                media: `https://raw.githubusercontent.com/genshindev/telegram-bot/master/assets/${match}.jpg`,
+                caption: message.about[match]
+            },
+            {
+                parse_mode: 'HTML',
+                reply_markup: await keyboard.about(match),
+                disable_web_page_preview: true
+            }
+        )
     }
 )
 

@@ -1,4 +1,4 @@
-<p align="center"><a href="https://t.me/genshindevbot" target="_blank"><img height="300" width="300" src="./assets/logo.jpg"/></a></p>
+<p align="center"><a href="https://t.me/genshindevbot" target="_blank"><img height="300" width="300" src="assets/team.jpg"/></a></p>
 
 <h2 align="center">Qiqi (Genshindevs Assistant)</h2>
 
