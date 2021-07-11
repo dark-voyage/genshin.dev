@@ -4,7 +4,7 @@
 
 <p align="center"><a href="https://t.me/genshindevbot"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=heroku&message=deployed&logoColor=eceff4&logo=github&colorA=000000&colorB=ffffff"/></a></p>
 
-<p align="center"> Telegram bot that uses <a href="https://github.com/genshindev/api" target="_blank">Genshindevs API</a> to provide information & guides.</p>
+<p align="center"> Telegram bot that uses <a href="https://github.com/genshindev/api" target="_blank">Genshindevs API</a> to provide infos via Telegram UI.</p>
 
 **This bot was built with [telegraf.js](https://github.com/telegraf/telegraf) in
 [Node.js](https://nodejs.org/en/). This bot works as package modular, so don't
