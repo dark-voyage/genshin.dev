@@ -1,2 +1,5 @@
 import './start'
 import './help'
+import './id'
+import './about'
+import './contribute'

@@ -21,8 +21,36 @@ export const help: InlineKeyboardMarkup = Markup.inlineKeyboard([
     [Markup.urlButton(`Official Website`, `https://genshin.mihoyo.com/en/home`)]
 ])
 
+export const about: InlineKeyboardMarkup = Markup.inlineKeyboard([
+    [
+        Markup.urlButton(`Mihoyo's Discord`, `https://discord.gg/auevVWRSMK`),
+        Markup.urlButton(
+            `Genshindev's Discord`,
+            `https://discord.gg/VPZHJWjtFp`
+        )
+    ]
+])
+
+export const contribute: InlineKeyboardMarkup = Markup.inlineKeyboard([
+    [Markup.urlButton(`Our Organization`, `https://github.com/genshindev`)],
+    [
+        Markup.urlButton(
+            `API used in this bot`,
+            `https://github.com/genshindev/api`
+        )
+    ],
+    [
+        Markup.urlButton(
+            `This repository`,
+            `https://github.com/genshindev/telegram-bot`
+        )
+    ]
+])
+
 export const artifact = {
-    action: Markup.inlineKeyboard([Markup.callbackButton(`⬅Back`, `artifacts`)]),
+    action: Markup.inlineKeyboard([
+        Markup.callbackButton(`⬅Back`, `artifacts`)
+    ]),
     middleware: async (): Promise<InlineKeyboardMarkup> => {
         const base = []
         for (const artifact of await ds(cs.ARTIFACT_URL)) {
