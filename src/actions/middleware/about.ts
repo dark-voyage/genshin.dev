@@ -10,7 +10,7 @@ composer.command(
         await ctx.replyWithPhoto(
             'https://raw.githubusercontent.com/genshindev/telegram-bot/master/assets/game.jpg',
             {
-              parse_mode: 'HTML',
+                parse_mode: 'HTML',
                 caption: message.about.game,
                 reply_markup: await keyboard.about('game')
             }
