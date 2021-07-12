@@ -12,12 +12,7 @@ export const start: InlineKeyboardMarkup = Markup.inlineKeyboard([
 ])
 
 export const help: InlineKeyboardMarkup = Markup.inlineKeyboard([
-    [
-        Markup.urlButton(
-            `Join our community`,
-            `https://t.me/thegenshinimpacts`
-        )
-    ],
+    [Markup.urlButton(`Join our community`, `https://t.me/thegenshinimpacts`)],
     [Markup.urlButton(`Official Website`, `https://genshin.mihoyo.com/en/home`)]
 ])
 
@@ -75,6 +70,28 @@ export const artifact = {
                         .replace(/-/gi, ' ')
                         .replace(/\b\w/g, (l) => l.toUpperCase()),
                     `artifact_${artifact}`
+                )
+            )
+        }
+        return Markup.inlineKeyboard(base, {
+            wrap: (btn, index, currentRow) => currentRow.length > 2
+        })
+    }
+}
+
+export const characters = {
+    action: Markup.inlineKeyboard([
+        Markup.callbackButton(`⬅Back`, `characters`)
+    ]),
+    middleware: async (): Promise<InlineKeyboardMarkup> => {
+        const base = []
+        for (const character of await ds(cs.CHARACTER_URL)) {
+            base.push(
+                Markup.callbackButton(
+                    character
+                        .replace(/-/gi, ' ')
+                        .replace(/\b\w/g, (l) => l.toUpperCase()),
+                    `character_${character}`
                 )
             )
         }

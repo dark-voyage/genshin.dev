@@ -88,3 +88,25 @@ export const artifact: {
     },
     middleware: `<b>Choose what artifact you want to get info about:</b>`
 }
+
+export const characters = {
+    action: async (person: string): Promise<string> => {
+        const data = await ds(cs.CHARACTER_URL + `/${person}`)
+        return (
+            `<b>Detailed information about ${data.name}:</b>` +
+            `\n` +
+            `\n` +
+            `🌀 <b>Name:</b> <i>${data.name}</i>` +
+            `\n` +
+            `⚔️ <b>Weapon:</b> <i>${data.weapon}</i>` +
+            `\n` +
+            `⭐ <b>Rarity:</b> ${'🌟'.repeat(data.rarity)}` +
+            `\n` +
+            `\n` +
+            `✨ <b>Description:</b>` +
+            `\n` +
+            `<code>${data.description}</code>`
+        )
+    },
+    middleware: `<b>Choose your character from the list above:</b>`
+}
