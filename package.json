@@ -74,6 +74,7 @@
     "@src": "dist",
     "@core": "dist/core",
     "@database": "dist/database",
-    "@layouts": "dist/layouts"
+    "@layouts": "dist/layouts",
+    "@utils": "dist/utils"
   }
 }

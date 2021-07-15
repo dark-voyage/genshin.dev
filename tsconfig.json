@@ -21,7 +21,8 @@
       "@type/*": ["src/types/*"],
       "@core/*": ["src/core/*"],
       "@database/*": ["src/database/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@layouts/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": [

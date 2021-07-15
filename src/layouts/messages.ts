@@ -92,6 +92,19 @@ export const artifact: {
 export const characters = {
     action: async (person: string): Promise<string> => {
         const data = await ds(cs.CHARACTER_URL + `/${person}`)
+        const birthday = async (): Promise<string> => {
+            if (data.birthday) {
+                return (
+                    `\n` +
+                    `🎂 <b>Birthday:</b> <i>${new Date(data.birthday)
+                        .toDateString()
+                        .replace(/0000/, '')
+                        .slice(4, -1)}</i>`
+                )
+            }
+
+            if (!data.birthday) return ''
+        }
         return (
             `<b>Detailed information about ${data.name}:</b>` +
             `\n` +
@@ -101,12 +114,92 @@ export const characters = {
             `⚔️ <b>Weapon:</b> <i>${data.weapon}</i>` +
             `\n` +
             `⭐ <b>Rarity:</b> ${'🌟'.repeat(data.rarity)}` +
+            `${await birthday()}` +
             `\n` +
             `\n` +
             `✨ <b>Description:</b>` +
             `\n` +
-            `<code>${data.description}</code>`
+            `${data.description}`
         )
     },
-    middleware: `<b>Choose your character from the list above:</b>`
+    middleware: `<b>Choose your character from the list above:</b>`,
+    skill: async (person: string): Promise<string> => {
+        const data = await ds(cs.CHARACTER_URL + `/${person}`)
+        return (
+            `<b>Information about skills of ${data.name}</b>` + `\n` + `\n` + ``
+        )
+    },
+    skillInfo: async (person: string, indexData: number): Promise<string> => {
+        const data = (await ds(cs.CHARACTER_URL + `/${person}`)).skillTalents[
+            indexData
+        ]
+        let upgrades = ''
+        if (data.upgrades) {
+            upgrades += `<b>Upgrades:</b>` + `\n`
+            for (const upgrade of data.upgrades) {
+                upgrades += `<code>${upgrade.name}: ${upgrade.value}</code>\n`
+            }
+        }
+        return (
+            `<b>${data.name}</b>` +
+            `\n` +
+            `<b>Type:</b> ${data.unlock}` +
+            `\n` +
+            `\n` +
+            `<b>Description:</b> ` +
+            `\n` +
+            `${data.description.replace(/\n/gi, '. ')}` +
+            `\n` +
+            `\n` +
+            `${upgrades}`
+        )
+    },
+    passiveTalent: async (person: string): Promise<string> => {
+        const data = await ds(cs.CHARACTER_URL + `/${person}`)
+        return `<b>Information about passive talents of ${data.name}</b>`
+    },
+    passiveTalentInfo: async (
+        person: string,
+        indexData: number
+    ): Promise<string> => {
+        const data = (await ds(cs.CHARACTER_URL + `/${person}`)).passiveTalents[
+            indexData
+        ]
+        return (
+            `<b>${data.name}</b>` +
+            `\n` +
+            `<b>Unlock:</b> ${data.unlock}` +
+            `\n` +
+            `<b>Level:</b> 🎚️ ${data.level}` +
+            `\n` +
+            `\n` +
+            `<b>Description:</b> ` +
+            `\n` +
+            `${data.description.replace(/\n/gi, '. ')}`
+        )
+    },
+    constellation: async (person: string): Promise<string> => {
+        const data = await ds(cs.CHARACTER_URL + `/${person}`)
+        return `<b>Information about constellations of ${data.name}</b>`
+    },
+    constellationInfo: async (
+        person: string,
+        indexData: number
+    ): Promise<string> => {
+        const data = (await ds(cs.CHARACTER_URL + `/${person}`)).constellations[
+            indexData
+        ]
+        return (
+            `<b>${data.name}</b>` +
+            `\n` +
+            `<b>Unlock:</b> ${data.unlock}` +
+            `\n` +
+            `<b>Level:</b> 🎚️ ${data.level}` +
+            `\n` +
+            `\n` +
+            `<b>Description:</b> ` +
+            `\n` +
+            `${data.description.replace(/\n/gi, '. ')}`
+        )
+    }
 }

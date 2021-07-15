@@ -5,22 +5,28 @@ import * as keyboard from '@layouts/keyboards'
 import { TelegrafContext } from '@type/telegraf'
 
 composer.action(
-    /character_(.*)/gi,
+    /skill_info_(.+)_(.+)/gi,
     async (ctx: TelegrafContext): Promise<void> => {
         const slug = ctx.match[1]
-        await ctx.editMessageText(await message.characters.action(slug), {
-            parse_mode: 'HTML',
-            reply_markup: await keyboard.characters.action(slug)
-        })
+        const indexData = parseInt(ctx.match[2])
+
+        await ctx.editMessageText(
+            await message.characters.skillInfo(slug, indexData),
+            {
+                parse_mode: 'HTML',
+                reply_markup: await keyboard.characters.skillInfo(slug)
+            }
+        )
     }
 )
 
 composer.action(
-    'characters',
+    /skill_(.+)/gi,
     async (ctx: TelegrafContext): Promise<void> => {
-        await ctx.editMessageText(message.characters.middleware, {
+        const slug = ctx.match[1]
+        await ctx.editMessageText(await message.characters.skill(slug), {
             parse_mode: 'HTML',
-            reply_markup: await keyboard.characters.middleware()
+            reply_markup: await keyboard.characters.skill(slug)
         })
     }
 )
