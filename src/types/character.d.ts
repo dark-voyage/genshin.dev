@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020 genshin.dev
+ * Licensed under the Open Software License version 3.0
+ */
+
 export interface Character {
     name: string
     vision: 'Anemo' | 'Geo' | 'Pyro' | 'Cryo' | 'Hydro' | 'Electro' | 'Dendro'

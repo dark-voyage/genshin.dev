@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020 genshin.dev
+ * Licensed under the Open Software License version 3.0
+ */
+
 import * as tt from 'telegraf/typings/telegram-types'
 import { TelegrafContext as TC } from 'telegraf/typings/context'
 import { Composer as C, Middleware } from 'telegraf/typings/index'
