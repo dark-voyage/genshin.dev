@@ -4,6 +4,7 @@
  */
 import ds from '@database/ds'
 import * as cs from '@database/cs'
+import { Character } from '@type/index'
 
 export const start: string =
     `<b>Welcome to Genshin Impact Telegram bot 😏!</b>` +
@@ -91,30 +92,40 @@ export const artifact: {
 
 export const characters = {
     action: async (person: string): Promise<string> => {
-        const data = await ds(cs.CHARACTER_URL + `/${person}`)
-        const birthday = async (): Promise<string> => {
+        const data: Character = await ds(cs.CHARACTER_URL + `/${person}`)
+        const additionalInfos = async (): Promise<string> => {
+            let base = ''
             if (data.birthday) {
-                return (
+                base +=
                     `\n` +
                     `🎂 <b>Birthday:</b> <i>${new Date(data.birthday)
                         .toDateString()
                         .replace(/0000/, '')
                         .slice(4, -1)}</i>`
-                )
             }
-
-            if (!data.birthday) return ''
+            if (data.nation) {
+                base += `\n` + `📍 <b>Nation:</b> <i>${data.nation}</i>`
+            }
+            if (data.affiliation) {
+                base +=
+                    `\n` + `📌 <b>Affiliation:</b> <i>${data.affiliation}</i>`
+            }
+            return base
         }
         return (
-            `<b>Detailed information about ${data.name}:</b>` +
+            `<b>ℹ️ Detailed information about ${data.name}:</b>` +
             `\n` +
             `\n` +
             `🌀 <b>Name:</b> <i>${data.name}</i>` +
             `\n` +
+            `🔮 <b>Vision:</b> <i>${data.vision}</i>` +
+            `\n` +
             `⚔️ <b>Weapon:</b> <i>${data.weapon}</i>` +
             `\n` +
+            `🪄 <b>Constellation:</b> <i>${data.constellation}</i>` +
+            `\n` +
             `⭐ <b>Rarity:</b> ${'🌟'.repeat(data.rarity)}` +
-            `${await birthday()}` +
+            `${await additionalInfos()}` +
             `\n` +
             `\n` +
             `✨ <b>Description:</b>` +

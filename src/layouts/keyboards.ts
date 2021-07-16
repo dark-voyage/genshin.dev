@@ -82,10 +82,22 @@ export const artifact = {
 export const characters = {
     action: async (slug: string): Promise<InlineKeyboardMarkup> => {
         const base = [
-            [Markup.callbackButton(`Skill Talents`, `skill_${slug}`)],
-            [Markup.callbackButton(`Passive Talents`, `talent_${slug}`)],
-            [Markup.callbackButton(`Constellations`, `constellation_${slug}`)],
-            [Markup.callbackButton(`⬅Back`, `characters`)]
+            [
+                Markup.callbackButton(
+                    `🖼️ Artwork`,
+                    `character_picture_${slug}`
+                ),
+                Markup.callbackButton(`💪🏻 Skill Talents`, `skill_${slug}`)
+            ],
+            [
+                Markup.callbackButton(`🔯 Passive Talents`, `talent_${slug}`),
+
+                Markup.callbackButton(
+                    `🔓 Constellations`,
+                    `constellation_${slug}`
+                )
+            ],
+            [Markup.callbackButton(`⬅️ Back`, `characters`)]
         ]
         return Markup.inlineKeyboard(base)
     },
@@ -108,7 +120,7 @@ export const characters = {
     skill: async (slug: string): Promise<InlineKeyboardMarkup> => {
         const base = []
         const data = (await ds(cs.CHARACTER_URL + `/${slug}`)).skillTalents
-        const back = [Markup.callbackButton(`⬅️Back`, `character_${slug}`)]
+        const back = [Markup.callbackButton(`⬅️ Back`, `character_${slug}`)]
         for (const skill of data) {
             base.push([
                 Markup.callbackButton(
@@ -122,13 +134,13 @@ export const characters = {
     },
     skillInfo: async (slug: string): Promise<InlineKeyboardMarkup> => {
         return Markup.inlineKeyboard([
-            [Markup.callbackButton(`⬅️Back`, `skill_${slug}`)]
+            [Markup.callbackButton(`⬅️ Back`, `skill_${slug}`)]
         ])
     },
     passiveTalent: async (slug: string): Promise<InlineKeyboardMarkup> => {
         const base = []
         const data = (await ds(cs.CHARACTER_URL + `/${slug}`)).passiveTalents
-        const back = [Markup.callbackButton(`⬅️Back`, `character_${slug}`)]
+        const back = [Markup.callbackButton(`⬅️ Back`, `character_${slug}`)]
         for (const talent of data) {
             base.push([
                 Markup.callbackButton(
@@ -142,13 +154,13 @@ export const characters = {
     },
     passiveTalentInfo: async (slug: string): Promise<InlineKeyboardMarkup> => {
         return Markup.inlineKeyboard([
-            [Markup.callbackButton(`⬅️Back`, `talent_${slug}`)]
+            [Markup.callbackButton(`⬅️ Back`, `talent_${slug}`)]
         ])
     },
     constellation: async (slug: string): Promise<InlineKeyboardMarkup> => {
         const base = []
         const data = (await ds(cs.CHARACTER_URL + `/${slug}`)).constellations
-        const back = [Markup.callbackButton(`⬅️Back`, `character_${slug}`)]
+        const back = [Markup.callbackButton(`⬅️ Back`, `character_${slug}`)]
         for (const constellation of data) {
             base.push([
                 Markup.callbackButton(
@@ -162,7 +174,7 @@ export const characters = {
     },
     constellationInfo: async (slug: string): Promise<InlineKeyboardMarkup> => {
         return Markup.inlineKeyboard([
-            [Markup.callbackButton(`⬅️Back`, `constellation_${slug}`)]
+            [Markup.callbackButton(`⬅️ Back`, `constellation_${slug}`)]
         ])
     }
 }
