@@ -49,7 +49,9 @@ export const help: string =
     `<b>List of API commands:</b>` +
     `\n` +
     `\n` +
-    `/artifacts - <code>get info about artifacts</code>`
+    `/artifacts - <code>get info about artifacts</code>` +
+      `\n` +
+  `/characters - <code>get info about characters</code>`
 
 export const about = {
     game:

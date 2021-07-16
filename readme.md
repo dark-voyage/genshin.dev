@@ -26,6 +26,7 @@ you're ready to go!**
 | /about      | Show about game creator's & our team             |
 | /contribute | Show links to our organization & repository      |
 | /artifacts  | Show all artifacts in detailed form via inline   |
+| /characters | Show all characters in detailed form via inline  |
 
 
 ## Contributors
