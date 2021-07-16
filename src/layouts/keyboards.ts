@@ -101,21 +101,54 @@ export const characters = {
         ]
         return Markup.inlineKeyboard(base)
     },
-    middleware: async (): Promise<InlineKeyboardMarkup> => {
+    middleware: async (page_number: number): Promise<InlineKeyboardMarkup> => {
         const base = []
-        for (const character of await ds(cs.CHARACTER_URL)) {
-            base.push(
+        const data = await ds(cs.CHARACTER_URL)
+        const currentPage = data.slice((page_number - 1) * 5, page_number * 5)
+        const nextPage = data.slice(
+            (page_number + 1 - 1) * 5,
+            (page_number + 1) * 5
+        )
+        for (const character of currentPage) {
+            base.push([
                 Markup.callbackButton(
                     character
                         .replace(/-/gi, ' ')
                         .replace(/\b\w/g, (l) => l.toUpperCase()),
                     `character_${character}`
                 )
-            )
+            ])
         }
-        return Markup.inlineKeyboard(base, {
-            wrap: (btn, index, currentRow) => currentRow.length > 2
-        })
+        if (page_number === 1) {
+            base.push([
+                Markup.callbackButton(
+                    `➡️`,
+                    `characters_page_${page_number + 1}`
+                )
+            ])
+        }
+        if (page_number !== 1 && nextPage[0] !== undefined) {
+            base.push([
+                Markup.callbackButton(
+                    `⬅️`,
+                    `characters_page_${page_number - 1}`
+                ),
+                Markup.callbackButton(
+                    `➡️`,
+                    `characters_page_${page_number + 1}`
+                )
+            ])
+        }
+        if (page_number !== 1 && nextPage[0] === undefined) {
+            base.push([
+                Markup.callbackButton(
+                    `⬅️`,
+                    `characters_page_${page_number - 1}`
+                )
+            ])
+        }
+
+        return Markup.inlineKeyboard(base)
     },
     skill: async (slug: string): Promise<InlineKeyboardMarkup> => {
         const base = []

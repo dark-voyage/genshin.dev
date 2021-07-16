@@ -13,6 +13,18 @@ composer.action(
 )
 
 composer.action(
+    /characters_page_(.+)/gi,
+    async (ctx: TelegrafContext): Promise<void> => {
+        await ctx.editMessageText(message.characters.middleware, {
+            parse_mode: 'HTML',
+            reply_markup: await keyboard.characters.middleware(
+                parseInt(ctx.match[1])
+            )
+        })
+    }
+)
+
+composer.action(
     /character_(.*)/gi,
     async (ctx: TelegrafContext): Promise<void> => {
         const slug = ctx.match[1]
@@ -28,7 +40,7 @@ composer.action(
     async (ctx: TelegrafContext): Promise<void> => {
         await ctx.editMessageText(message.characters.middleware, {
             parse_mode: 'HTML',
-            reply_markup: await keyboard.characters.middleware()
+            reply_markup: await keyboard.characters.middleware(1)
         })
     }
 )

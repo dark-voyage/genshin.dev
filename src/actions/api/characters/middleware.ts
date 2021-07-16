@@ -9,7 +9,7 @@ composer.command(
     async (ctx: TelegrafContext): Promise<void> => {
         await ctx.replyWithHTML(message.characters.middleware, {
             parse_mode: 'HTML',
-            reply_markup: await keyboard.characters.middleware()
+            reply_markup: await keyboard.characters.middleware(1)
         })
     }
 )
