@@ -50,8 +50,8 @@ export const help: string =
     `\n` +
     `\n` +
     `/artifacts - <code>get info about artifacts</code>` +
-      `\n` +
-  `/characters - <code>get info about characters</code>`
+    `\n` +
+    `/characters - <code>get info about characters</code>`
 
 export const about = {
     game:
