@@ -3,31 +3,26 @@
  * Licensed under the Open Software License version 3.0
  */
 
+import { Rarity, Vision, VisionKey, Weapon, WeaponKey } from '@type/additional'
+
 export interface Character {
     name: string
-    vision: 'Anemo' | 'Geo' | 'Pyro' | 'Cryo' | 'Hydro' | 'Electro' | 'Dendro'
-    weapon: 'Sword' | 'Bow' | 'Polearm' | 'Catalyst' | 'Claymore'
+    vision: Vision
+    weapon: Weapon
     nation?: 'Monstadt' | 'Liyue'
     affiliation?: string
-    rarity: 3 | 4 | 5
+    rarity: Rarity
     constellation: string
     birthday?: string | Date
     description: string
-    skillTalents: Skill[]
-    passiveTalents: Passive[]
-    constellations: Constellation[]
-    vision_key:
-        | 'ANEMO'
-        | 'GEO'
-        | 'PYRO'
-        | 'CRYO'
-        | 'HYDRO'
-        | 'ELECTRO'
-        | 'DENDRO'
-    weapon_type: 'SWORD' | 'BOW' | 'POLEARM' | 'CATALYST' | 'CLAYMORE'
+    skillTalents: CharacterSkill[]
+    passiveTalents: CharacterPassive[]
+    constellations: CharacterConstellation[]
+    vision_key: VisionKey
+    weapon_type: WeaponKey
 }
 
-export interface Skill {
+export interface CharacterSkill {
     name: string
     unlock: string
     description: string
@@ -35,7 +30,7 @@ export interface Skill {
     upgrades: SkillUpgrades[]
 }
 
-export interface SkillUpgrades {
+export interface CharacterSkillUpgrades {
     name: string
     value: string
 }
@@ -47,7 +42,7 @@ export interface Passive {
     level: number
 }
 
-export interface Constellation {
+export interface CharacterConstellation {
     name: string
     unlock:
         | 'Constellation Lv. 1'

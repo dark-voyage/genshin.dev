@@ -3,10 +3,12 @@
  * Licensed under the Open Software License version 3.0
  */
 
+import { Rarity, Weapon as WeaponTypes } from "@type/additional";
+
 export interface Weapon {
     name: string
-    type: 'Sword' | 'Bow' | 'Polearm' | 'Catalyst' | 'Claymore'
-    rarity: 3 | 4 | 5
+    type: WeaponTypes
+    rarity: Rarity
     baseAttack: number
     subStat:
         | string

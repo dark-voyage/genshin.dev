@@ -4,6 +4,7 @@
  */
 
 import { Element } from '@type/element'
+import { Vision } from "@type/additional";
 
 export interface Enemy {
     id: string
@@ -16,7 +17,7 @@ export interface Enemy {
     elements: Element[]
     drops: Drop[]
     artifacts?: Artifact[]
-    'elemental-description'?: Elementality[]
+    'elemental-description'?: ElementalDescription[]
     'mora-gained': number
 }
 
@@ -32,7 +33,7 @@ export interface Artifact {
     rarity: string
 }
 
-export interface Elementality {
-    element: 'Anemo' | 'Geo' | 'Pyro' | 'Cryo' | 'Hydro' | 'Electro' | 'Dendro'
+export interface ElementalDescription {
+    element: Vision
     description: string
 }

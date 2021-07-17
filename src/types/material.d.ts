@@ -3,6 +3,8 @@
  * Licensed under the Open Software License version 3.0
  */
 
+import { Rarity, Weekdays } from './additional'
+
 export interface Material {
     'boss-material': BossMaterial
     'character-ascension': CharacterAscension
@@ -11,9 +13,9 @@ export interface Material {
     'cooking-ingredients': CookingIngredients
     'local-specialties': LocalSpecialties
     'talent-book': TalentBook
-    'talent-boss': undefined
-    'weapon-ascension': undefined
-    'weapon-experience': undefined
+    'talent-boss': TalentBoss
+    'weapon-ascension': WeaponAscension
+    'weapon-experience': WeaponExperience
 }
 
 export interface BossMaterial {
@@ -37,7 +39,7 @@ export interface CharacterAscensionItem {
     id: string
     name: string
     sources: [string]
-    rarity: 1 | 2 | 3 | 4 | 5
+    rarity: Rarity
 }
 
 export interface CharacterExperience {
@@ -48,7 +50,7 @@ export interface CharacterExperienceItem {
     id: string
     name: string
     experience: number
-    rarity: 1 | 2 | 3 | 4 | 5
+    rarity: Rarity
 }
 
 export interface CommonAscension {
@@ -63,14 +65,14 @@ export interface CommonAscension {
 export interface CommonAscensionCharacterItem {
     id: string
     name: string
-    rarity: 1 | 2 | 3 | 4 | 5
+    rarity: Rarity
 }
 
 export interface CookingIngredients {
     [key: string]: {
         name: string
         description: string
-        rarity?: 1 | 2 | 3 | 4 | 5
+        rarity?: Rarity
         sources: [string]
     }
 }
@@ -97,15 +99,7 @@ export interface TalentBook {
             | 'gold'
     ]: {
         characters: [string]
-        availability: [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday',
-            'Sunday'
-        ]
+        availability: Weekdays
         source: string
         items: TalentBookItem[]
     }
@@ -114,5 +108,49 @@ export interface TalentBook {
 export interface TalentBookItem {
     id: string
     name: string
-    rarity: 1 | 2 | 3 | 4 | 5
+    rarity: Rarity
+}
+
+export interface TalentBoss {
+    [key: string]: {
+        id: string
+        name: string
+        characters: [string]
+    }
+}
+
+export interface WeaponAscension {
+    [
+        key:
+            | string
+            | 'decarabian'
+            | 'boreal'
+            | 'dandelion'
+            | 'guyun'
+            | 'elixir'
+            | 'aerosiderite'
+    ]: {
+        weapons: [string]
+        availability: Weekdays
+        source: string
+        items: WeaponAscensionItem[]
+    }
+}
+
+export interface WeaponAscensionItem {
+    id: string
+    name: string
+    rarity: Rarity
+}
+
+export interface WeaponExperience {
+    items: WeaponExperienceItem[]
+}
+
+export interface WeaponExperienceItem {
+    id: string
+    name: string
+    experience: number
+    rarity: Rarity
+    source: [string]
 }

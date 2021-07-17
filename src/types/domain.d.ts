@@ -3,6 +3,8 @@
  * Licensed under the Open Software License version 3.0
  */
 
+import { VisionKey } from "@type/additional";
+
 export interface Domain {
     name: string
     type: 'Forgery'
@@ -21,7 +23,7 @@ export interface Requirements {
 }
 
 export interface Recommendations {
-    element: 'ANEMO' | 'GEO' | 'PYRO' | 'CRYO' | 'HYDRO' | 'ELECTRO' | 'DENDRO'
+    element: VisionKey
 }
 
 export interface Rewards {

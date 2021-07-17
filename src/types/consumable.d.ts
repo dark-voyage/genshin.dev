@@ -3,6 +3,8 @@
  * Licensed under the Open Software License version 3.0
  */
 
+import { Rarity } from "@type/additional";
+
 export interface Consumable {
     food: Food
     potion: Potion
@@ -11,7 +13,7 @@ export interface Consumable {
 export interface Food {
     [key: string]: {
         name: string
-        rarity: 1 | 2 | 3 | 4 | 5
+        rarity: Rarity
         type: string
         effect: string
         hasRecipe: boolean
@@ -29,7 +31,7 @@ export interface Recipe {
 export interface Potion {
     name: string
     effect: string
-    rarity: 1 | 2 | 3 | 4 | 5
+    rarity: Rarity
     crafting: Crafting[]
 }
 
