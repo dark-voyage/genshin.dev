@@ -3,7 +3,7 @@
  * Licensed under the Open Software License version 3.0
  */
 
-import { Rarity } from "@type/additional";
+import { Rarity } from '@type/additional'
 
 export interface Consumable {
     food: Food

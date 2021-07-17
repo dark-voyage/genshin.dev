@@ -3,7 +3,7 @@
  * Licensed under the Open Software License version 3.0
  */
 
-import { VisionKey } from "@type/additional";
+import { VisionKey } from '@type/additional'
 
 export interface Domain {
     name: string

@@ -3,7 +3,7 @@
  * Licensed under the Open Software License version 3.0
  */
 
-import { Vision, VisionKey } from "@type/additional";
+import { Vision, VisionKey } from '@type/additional'
 
 export interface Element {
     name: Vision

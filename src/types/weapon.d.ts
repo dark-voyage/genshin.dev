@@ -3,7 +3,7 @@
  * Licensed under the Open Software License version 3.0
  */
 
-import { Rarity, Weapon as WeaponTypes } from "@type/additional";
+import { Rarity, Weapon as WeaponTypes } from '@type/additional'
 
 export interface Weapon {
     name: string

@@ -4,7 +4,7 @@
  */
 
 import { Element } from '@type/element'
-import { Vision } from "@type/additional";
+import { Vision } from '@type/additional'
 
 export interface Enemy {
     id: string
